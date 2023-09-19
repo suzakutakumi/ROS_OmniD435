@@ -1,0 +1,4 @@
+<launch>
+  <node name="pcl_talker"   pkg="omni_d435" type="pc_pub" output="screen"/>
+  <node name="pcl_listener" pkg="omni_d435" type="pc_sub" output="screen"/>
+</launch>
