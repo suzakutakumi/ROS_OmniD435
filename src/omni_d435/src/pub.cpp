@@ -44,6 +44,8 @@ try
       auto color = cameras[i]->get_color();
       pcs[i] = PointCloud(points, color);
 
+      pcs[i].z_range_filter(-2.0, 2.0);
+
       switch (i)
       {
       case Direction::Front:
@@ -84,6 +86,7 @@ try
     sensor_msgs::PointCloud2 pcl_msg;
     pcl::toROSMsg(*merged.get_cloud(), pcl_msg);
     ROS_INFO("publish:%d", merged.get_cloud()->size());
+    pcl_msg.header.frame_id = "/map";
     pub.publish(pcl_msg);
 
     ros::spinOnce();

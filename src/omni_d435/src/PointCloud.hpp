@@ -31,6 +31,7 @@ public:
     PointCloud(const rs2::points &, const rs2::video_frame &);
     void save_to_pcd(const std::string &) const;
     pc_ptr get_cloud() const { return cloud; }
+    void z_range_filter(int,int);
     void filter(void (*func)(pcl::PointXYZRGB &));
     void filter(pcl::PointXYZRGB &(*func)(const pcl::PointXYZRGB &));
     PointCloud extended(const PointCloud &);
